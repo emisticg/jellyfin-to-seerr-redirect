@@ -72,6 +72,6 @@ services:
   jellyfin:
     image: jellyfin/jellyfin
     volumes:
-      - /sciezka/do/twojego/index.html:/usr/share/jellyfin/web/index.html:ro
+      - /sciezka/do/twojego/index.html:/jellyfin/jellyfin-web/index.html:ro
 ```
 
