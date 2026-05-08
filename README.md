@@ -38,7 +38,7 @@ Teraz na ekranie głównym pojawi się kafelek z Twoją nazwą. Jeśli chcesz, b
 1. Otwórz Jellyfin w przeglądarce.
 2. Kliknij prawym przyciskiem myszy na kafelek biblioteki, którą chcesz przekierować (np. "JellySeerr").
 3. Wybierz **Zbadaj (Inspect)**.
-4. Znajdź atrybut `data-id` (np. `data-id="83a3a8bac0624fd4ac36f3edbbcc9473"`). Skopiuj go.
+4. Znajdź atrybut `data-id` (np. `data-id="019e0750d3ff75a79b877af453d36efb"`). Skopiuj go.
 
 ### 3. Utworzenie pliku redirect.js
 Wklej poniższy skrypt do pliku redirect.js
