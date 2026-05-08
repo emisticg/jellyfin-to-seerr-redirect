@@ -1,0 +1,19 @@
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    user: uid:gid
+    container_name: jellyfin
+    network_mode: 'host'
+    environment:
+      TZ: "Europe/Warsaw"
+      JELLYFIN_PublishedServerUrl: <adres_twojego_serwera>
+    volumes:
+      - ./jellyfin/files/config:/config
+      - ./jellyfin/files/cache:/cache
+      - /jellyfin/files/custom_config/index.html:/usr/share/jellyfin/web/index.html:ro
+      - type: bind
+        source: /jellyfin/movies
+        target: /movies
+      - type: bind
+        source: /jellyfin/series
+        target: /series
+    restart: 'unless-stopped'
