@@ -78,7 +78,7 @@ docker cp <name_of_jellyfin_container>:/jellyfin/jellyfin-web/index.html ./index
 Wklej poniższy skrypt na samym dole pliku `index.html` Twojego serwera Jellyfin (tuż przed tagiem `</body>`):
 
 ```html
-<script src="redirect.js"></script>
+<script src="redirect.js?v=2"></script>
 ```
 ### 4. Wdrożenie (Docker)
 
