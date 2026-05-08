@@ -40,38 +40,56 @@ Teraz na ekranie głównym pojawi się kafelek z Twoją nazwą. Jeśli chcesz, b
 3. Wybierz **Zbadaj (Inspect)**.
 4. Znajdź atrybut `data-id` (np. `data-id="83a3a8bac0624fd4ac36f3edbbcc9473"`). Skopiuj go.
 
-### 3. Edycja index.html
-Wklej poniższy skrypt na samym dole pliku `index.html` Twojego serwera Jellyfin (tuż przed tagiem `</body>`):
+### 3. Utworzenie pliku redirect.js
+Wklej poniższy skrypt do pliku redirect.js
 
 ```html
 <script>
     document.addEventListener('click', function(event) {
+        // Szukamy najbliższego kafelka (karty)
         const card = event.target.closest('.card');
+
         if (card) {
+            // Sprawdzamy po unikalnym ID Twojej biblioteki
             const itemId = card.getAttribute('data-id');
-            
-            // Podmień poniższe ID na ID swojej biblioteki
-            if (itemId === '83a3a8bac0624fd4ac36f3edbbcc9473') {
-                console.log("Wykryto kliknięcie w Odkrywaj/Discover. Przekierowuję do Jellyseerr...");
-                event.preventDefault();    
-                event.stopPropagation();   
-                
-                // Adres docelowy (np. Twoja instancja Jellyseerr)
-                const jellyseerrUrl = 'https://example.com/jellyseerr'; // TU WPISZ SWÓJ ADRES JELLYSEERR 
+
+            // ID z kodu to: 019e0750d3ff75a79b877af453d36efb zamień na swój
+            if (itemId === '019e0750d3ff75a79b877af453d36efb') {
+
+                console.log("Wykryto kliknięcie w bibliotekę przekierowań. Przekierowuję do Jellyseerr...");
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                // TU WPISZ SWÓJ ADRES JELLYSEERR
+                const jellyseerrUrl = 'https://127.0.01:5055';
+
                 window.location.href = jellyseerrUrl;
             }
         }
     }, true);
 </script>
 ```
+### 3. Edycja index.html
+Skopiuj swój index.html do wybranej lokalizacji poleceniem:
+```sh
+docker cp <name_of_jellyfin_container>:/jellyfin/jellyfin-web/index.html ./index.html
+```
+Wklej poniższy skrypt na samym dole pliku `index.html` Twojego serwera Jellyfin (tuż przed tagiem `</body>`):
+
+```html
+<script src="redirect.js"></script>
+```
 ### 4. Wdrożenie (Docker)
+
 Jeśli używasz Dockera, najbezpieczniej jest podmontować zmodyfikowany plik przez wolumen w docker-compose.yml:
 
 ```yml
 services:
   jellyfin:
-    image: jellyfin/jellyfin
+    image: jellyfin/jellyfin:latest
     volumes:
       - /sciezka/do/twojego/index.html:/jellyfin/jellyfin-web/index.html:ro
+      - /sciezka/do/twojego/index.html:/jellyfin/jellyfin-web/redirect.js:ro
 ```
 
