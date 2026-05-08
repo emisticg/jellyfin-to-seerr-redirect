@@ -44,7 +44,6 @@ Teraz na ekranie głównym pojawi się kafelek z Twoją nazwą. Jeśli chcesz, b
 Wklej poniższy skrypt do pliku redirect.js
 
 ```html
-<script>
     document.addEventListener('click', function(event) {
         // Szukamy najbliższego kafelka (karty)
         const card = event.target.closest('.card, .navMenuOption');
@@ -67,7 +66,6 @@ Wklej poniższy skrypt do pliku redirect.js
             }
         }
     }, true);
-</script>
 ```
 ### 3. Edycja index.html
 Skopiuj swój index.html do wybranej lokalizacji poleceniem:
@@ -79,6 +77,8 @@ Wklej poniższy skrypt na samym dole pliku `index.html` Twojego serwera Jellyfin
 ```html
 <script src="redirect.js?v=2"></script>
 ```
+!!! Uwaga! Przy każdej zmianie w redirect.js najlepiej jest zmienić v=2 na kolejny. Wtedy mamy pewność, że przeglądarka poprawnie załaduje zmieniony plik.
+
 ### 4. Wdrożenie (Docker)
 
 Jeśli używasz Dockera, najbezpieczniej jest podmontować zmodyfikowany plik przez wolumen w docker-compose.yml:
