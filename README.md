@@ -47,11 +47,11 @@ Wklej poniższy skrypt do pliku redirect.js
 <script>
     document.addEventListener('click', function(event) {
         // Szukamy najbliższego kafelka (karty)
-        const card = event.target.closest('.card');
+        const card = event.target.closest('.card, .navMenuOption');
 
         if (card) {
             // Sprawdzamy po unikalnym ID Twojej biblioteki
-            const itemId = card.getAttribute('data-id');
+            const itemId = card.getAttribute('data-id') || card.getAttribute('data-itemid');
 
             // ID z kodu to: 019e0750d3ff75a79b877af453d36efb zamień na swój
             if (itemId === '019e0750d3ff75a79b877af453d36efb') {
@@ -63,7 +63,6 @@ Wklej poniższy skrypt do pliku redirect.js
 
                 // TU WPISZ SWÓJ ADRES JELLYSEERR
                 const jellyseerrUrl = 'https://127.0.0.1:5055';
-
                 window.location.href = jellyseerrUrl;
             }
         }
