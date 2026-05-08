@@ -9,7 +9,7 @@
     volumes:
       - ./jellyfin/files/config:/config
       - ./jellyfin/files/cache:/cache
-      - /jellyfin/files/custom_config/index.html:/usr/share/jellyfin/web/index.html:ro
+      - /jellyfin/files/custom_config/index.html:/jellyfin/jellyfin-web/index.html:ro
       - type: bind
         source: /jellyfin/movies
         target: /movies
