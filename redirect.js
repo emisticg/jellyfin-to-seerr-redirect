@@ -16,7 +16,7 @@
                 event.stopPropagation();
 
                 // TU WPISZ SWÓJ ADRES JELLYSEERR
-                const jellyseerrUrl = 'https://127.0.01:5055';
+                const jellyseerrUrl = 'https://127.0.0.1:5055';
 
                 window.location.href = jellyseerrUrl;
             }
