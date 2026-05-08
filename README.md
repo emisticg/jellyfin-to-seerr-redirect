@@ -10,7 +10,6 @@ Lekki i skuteczny skrypt JavaScript do przekierowywania konkretnych bibliotek Je
 
 - **Bez wtyczek:** Nie obciążasz serwera dodatkowymi procesami.
 - **Niezależność od języka:** Skrypt identyfikuje kafelek po unikalnym `data-id`.
-- **Obsługa Reverse Proxy:** Zawiera unikalną konfigurację dla Nginx, pozwalającą na uruchomienie Jellyseerr w subfolderze (`/seerr`), co natywnie nie jest wspierane.
 - **Błyskawiczne działanie:** Wykorzystuje delegację zdarzeń (Event Delegation), dzięki czemu przekierowanie następuje natychmiast po kliknięciu.
 
 ---
