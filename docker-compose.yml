@@ -7,10 +7,10 @@
       TZ: "Europe/Warsaw"
       JELLYFIN_PublishedServerUrl: <adres_twojego_serwera>
     volumes:
-      - ./jellyfin/files/config:/config
-      - ./jellyfin/files/cache:/cache
-      - /jellyfin/files/custom_config/index.html:/jellyfin/jellyfin-web/index.html:ro
-      - /jellyfin/files/custom_config/redirect.js:/jellyfin/jellyfin-web/redirect.js:ro
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - /jellyfin/custom_config/index.html:/jellyfin/jellyfin-web/index.html:ro
+      - /jellyfin/custom_config/redirect.js:/jellyfin/jellyfin-web/redirect.js:ro
       - type: bind
         source: /jellyfin/movies
         target: /movies
