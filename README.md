@@ -90,4 +90,6 @@ services:
       - /sciezka/do/twojego/index.html:/jellyfin/jellyfin-web/index.html:ro
       - /sciezka/do/twojego/index.html:/jellyfin/jellyfin-web/redirect.js:ro
 ```
-
+Restart kontenera:
+```sh
+docker compose ip -d --force-recreate <name_of_jellyfin_container>
