@@ -1,2 +1,77 @@
-# jellyfin-to-jellyseerr-redirect
-Skrypt przekierowujący z biblioteki do JellySeerr.  Zmień dowolny kafelek w bezpośredni link do Jellyseerr.
+# Jellyfin to Jellyseerr Redirect 
+
+Lekki i skuteczny skrypt JavaScript do przekierowywania konkretnych bibliotek Jellyfin na zewnętrzne adresy URL (np. Jellyseerr). Rozwiązanie typu "inject-and-forget", które nie wymaga instalacji ciężkich wtyczek.
+
+---
+### Przetestowane na:
+- **Jellyfin** 10.11.8
+- **Jellyser** 3.1.0
+## Dlaczego to rozwiązanie?
+
+- **Bez wtyczek:** Nie obciążasz serwera dodatkowymi procesami.
+- **Niezależność od języka:** Skrypt identyfikuje kafelek po unikalnym `data-id`.
+- **Obsługa Reverse Proxy:** Zawiera unikalną konfigurację dla Nginx, pozwalającą na uruchomienie Jellyseerr w subfolderze (`/seerr`), co natywnie nie jest wspierane.
+- **Błyskawiczne działanie:** Wykorzystuje delegację zdarzeń (Event Delegation), dzięki czemu przekierowanie następuje natychmiast po kliknięciu.
+
+---
+
+
+## 🛠️ Instrukcja instalacji
+
+
+### 1. Przygotowanie "pustej" biblioteki (Trigger)
+
+Aby skrypt miał na czym operować, musisz stworzyć w Jellyfin bibliotekę, która będzie służyła jako przycisk.
+
+1.  Wejdź w **Kokpit** -> **Biblioteki**.
+2.  Kliknij **Dodaj media do biblioteki**.
+3.  Ustaw typ zawartości. Nie ma znaczenia jaki.
+4.  Nadaj nazwę wyświetlaną (np. `JellySeerr`).
+5.  **Foldery:** Nie dodawaj żadnych folderów! Zostaw tę sekcję pustą.
+6.  W ustawieniach biblioteki (na dole):
+    *   Odznacz wszystkie opcje
+7.  Zatwierdź klikając **OK**.
+
+Teraz na ekranie głównym pojawi się kafelek z Twoją nazwą. Jeśli chcesz, by wyglądał profesjonalnie, kliknij na niego trzy kropki -> **Edytuj obraz** i wgraj własną grafikę (np. logo Jellyseerr).
+
+### 2. Znajdź ID swojej biblioteki
+1. Otwórz Jellyfin w przeglądarce.
+2. Kliknij prawym przyciskiem myszy na kafelek biblioteki, którą chcesz przekierować (np. "JellySeerr").
+3. Wybierz **Zbadaj (Inspect)**.
+4. Znajdź atrybut `data-id` (np. `data-id="83a3a8bac0624fd4ac36f3edbbcc9473"`). Skopiuj go.
+
+### 3. Edycja index.html
+Wklej poniższy skrypt na samym dole pliku `index.html` Twojego serwera Jellyfin (tuż przed tagiem `</body>`):
+
+```html
+<script>
+    document.addEventListener('click', function(event) {
+        const card = event.target.closest('.card');
+        if (card) {
+            const itemId = card.getAttribute('data-id');
+            
+            // Podmień poniższe ID na ID swojej biblioteki
+            if (itemId === '83a3a8bac0624fd4ac36f3edbbcc9473') {
+                console.log("Wykryto kliknięcie w Odkrywaj/Discover. Przekierowuję do Jellyseerr...");
+                event.preventDefault();    
+                event.stopPropagation();   
+                
+                // Adres docelowy (np. Twoja instancja Jellyseerr)
+                const jellyseerrUrl = 'https://example.com/jellyseerr'; // TU WPISZ SWÓJ ADRES JELLYSEERR 
+                window.location.href = jellyseerrUrl;
+            }
+        }
+    }, true);
+</script>
+```
+### 4. Wdrożenie (Docker)
+Jeśli używasz Dockera, najbezpieczniej jest podmontować zmodyfikowany plik przez wolumen w docker-compose.yml:
+
+```yml
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    volumes:
+      - /sciezka/do/twojego/index.html:/usr/share/jellyfin/web/index.html:ro
+```
+
