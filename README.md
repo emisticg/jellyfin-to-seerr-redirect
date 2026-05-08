@@ -1,11 +1,11 @@
-# Jellyfin to Jellyseerr Redirect 
+# Jellyfin to Seerr Redirect 
 
 Lekki i skuteczny skrypt JavaScript do przekierowywania konkretnych bibliotek Jellyfin na zewnętrzne adresy URL (np. Jellyseerr). Rozwiązanie typu "inject-and-forget", które nie wymaga instalacji ciężkich wtyczek.
 
 ---
 ### Przetestowane na:
 - **Jellyfin** 10.11.8
-- **Jellyser** 3.1.0
+- **Seerr** 3.1.0
 ## Dlaczego to rozwiązanie?
 
 - **Bez wtyczek:** Nie obciążasz serwera dodatkowymi procesami.
