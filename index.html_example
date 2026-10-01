@@ -121,7 +121,7 @@
     <div id="reactRoot">
       <div class="splashLogo"></div>
     </div>
-    <script src="redirect.js?v=3.6"></script>
+    <script src="redirect.js?v=1.0"></script>
   </body>
 
 </html>
