@@ -1,6 +1,6 @@
 ['click', 'auxclick'].forEach(eventType => {
     document.addEventListener(eventType, function(event) {
-        // Allow LMB (0) MMB (1) przycisk. RMB(2).
+        // Allow LMB (0) MMB (1) and block RMB(2).
         if (event.button !== 0 && event.button !== 1) return;
 
         const card = event.target.closest('.card, .navMenuOption');
