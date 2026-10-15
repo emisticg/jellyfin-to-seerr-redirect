@@ -4,7 +4,7 @@ Lekki i skuteczny skrypt JavaScript do przekierowywania konkretnych bibliotek Je
 
 ---
 ### Przetestowane na:
-- **Jellyfin** 10.11.8 oraz 10.11.11
+- **Jellyfin** 10.11.8 oraz 10.11.11 oraz 12.2
 - **Seerr** 3.1.0 oraz 3.4.1
 ## Dlaczego to rozwiązanie?
 
@@ -45,18 +45,23 @@ Wklej poniższy skrypt do pliku redirect.js
 ```html
 ['click', 'auxclick'].forEach(eventType => {
     document.addEventListener(eventType, function(event) {
+        // Allow LMB (0) MMB (1) and block RMB(2).
         if (event.button !== 0 && event.button !== 1) return;
+
         const card = event.target.closest('.card, .navMenuOption');
+        const discoverLink = event.target.closest('a[href*="019e0750d3ff75a79b877af453d36efb"]');
 
-        if (!card) return;
-        const itemId = card.dataset.id || card.dataset.itemid;
+        if (!card && !discoverLink) return;
 
-        if (itemId === '019e0750d3ff75a79b877af453d36efb') {
+        const itemId = card ? (card.dataset.id || card.dataset.itemid) : null;
+
+        if (itemId === '019e0750d3ff75a79b877af453d36efb' || discoverLink) {
             event.preventDefault();
             event.stopPropagation();
 
             const jellyseerrUrl = 'https://127.0.0.1:5055';
 
+            // Keyboard modifier handling (Ctrl, Cmd, Shift) for LMB
             const openInNewTab = (event.button === 1) || event.ctrlKey || event.metaKey || event.shiftKey;
             if (openInNewTab) {
                 window.open(jellyseerrUrl, '_blank');
