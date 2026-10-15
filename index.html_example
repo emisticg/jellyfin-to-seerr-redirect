@@ -2,7 +2,7 @@
 //THIS IS A COPY OF INDEX.HTML TO GET YOUR OWN USE: docker cp <name_of_jellyfin_container>:/jellyfin/jellyfin-web/index.html ./index.html
 //AND ADD <script src="redirect.js?v=1.0"></script> BEFORE </body></html>
 <!doctype html>
-<html class="preload" dir="ltr">
+<html dir="ltr">
 
   <head>
     <meta charset="utf-8">
@@ -53,8 +53,9 @@
         cursor: none !important
       }
 
-      .preload {
-        background-color: #101010
+      html {
+        background-color: #101010;
+        color: rgba(255, 255, 255, .7)
       }
 
       .hide,
@@ -84,37 +85,38 @@
         left: 0
       }
     </style>
-    <script defer="defer" src="runtime.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40jellyfin.sdk.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40mui.material.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40mui.system.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40mui.utils.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40mui.icons-material.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40tanstack.query-core.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.date-fns.esm.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.lodash-es.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.react-transition-group.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.core-js.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40popperjs.core.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.axios.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.react-dom.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.jquery.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.webcomponents.js.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.resize-observer-polyfill.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.regenerator-runtime.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.jellyfin-apiclient.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.intersection-observer.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.history.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.dompurify.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.react-router.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.react-router-dom.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.%40remix-run.router.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="node_modules.abortcontroller-polyfill.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="46967.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="main.jellyfin.bundle.js?bd97e362c032911dbc8f"></script>
-    <script defer="defer" src="serviceworker.js?bd97e362c032911dbc8f"></script>
-    <link href="46967.03edf3bb7ee048ee10be.css?bd97e362c032911dbc8f" rel="stylesheet">
-    <link href="main.jellyfin.f725276386e5b19afe0c.css?bd97e362c032911dbc8f" rel="stylesheet">
+    <script defer="defer" src="runtime.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40jellyfin.sdk.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40mui.material.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40mui.icons-material.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40mui.system.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40mui.utils.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.lodash-es.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40tanstack.query-core.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40tanstack.react-query.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.date-fns.esm.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.react-transition-group.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.core-js.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40popperjs.core.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.axios.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.react-dom.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.jquery.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.webcomponents.js.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.resize-observer-polyfill.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.regenerator-runtime.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.jellyfin-apiclient.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.intersection-observer.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.history.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.dompurify.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.react-router.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.react-router-dom.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.%40remix-run.router.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="node_modules.abortcontroller-polyfill.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="1133.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="main.jellyfin.bundle.js?fd083178eda672854efd"></script>
+    <script defer="defer" src="serviceworker.js?fd083178eda672854efd"></script>
+    <link href="1133.03edf3bb7ee048ee10be.css?fd083178eda672854efd" rel="stylesheet">
+    <link href="main.jellyfin.d0fe7ebed50c35511f89.css?fd083178eda672854efd" rel="stylesheet">
   </head>
 
   <body dir="ltr">
