@@ -4,12 +4,13 @@
         if (event.button !== 0 && event.button !== 1) return;
 
         const card = event.target.closest('.card, .navMenuOption');
+        const discoverLink = event.target.closest('a[href*="019e0750d3ff75a79b877af453d36efb"]');
 
-        if (!card) return;
+        if (!card && !discoverLink) return;
 
-        const itemId = card.dataset.id || card.dataset.itemid;
+        const itemId = card ? (card.dataset.id || card.dataset.itemid) : null;
 
-        if (itemId === '019e0750d3ff75a79b877af453d36efb') {
+        if (itemId === '019e0750d3ff75a79b877af453d36efb' || discoverLink) {
             event.preventDefault();
             event.stopPropagation();
 
@@ -17,7 +18,6 @@
 
             // Keyboard modifier handling (Ctrl, Cmd, Shift) for LMB
             const openInNewTab = (event.button === 1) || event.ctrlKey || event.metaKey || event.shiftKey;
-
             if (openInNewTab) {
                 window.open(jellyseerrUrl, '_blank');
             } else {
